@@ -1147,6 +1147,8 @@ PODS:
     - React-RCTImage
   - RNVectorIcons (9.2.0):
     - React-Core
+  - RNVoipPushNotification (3.3.1):
+    - React-Core
   - Stripe (23.5.1):
     - StripeApplePay (= 23.5.1)
     - StripeCore (= 23.5.1)
@@ -1236,6 +1238,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - RNVoipPushNotification (from `../node_modules/react-native-voip-push-notification`)
   - "stripe-react-native (from `../node_modules/@stripe/stripe-react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1368,6 +1371,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  RNVoipPushNotification:
+    :path: "../node_modules/react-native-voip-push-notification"
   stripe-react-native:
     :path: "../node_modules/@stripe/stripe-react-native"
   Yoga:
@@ -1443,6 +1448,7 @@ SPEC CHECKSUMS:
   RNReanimated: f0dd6b881808e635ef0673f89642937d6c141314
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
+  RNVoipPushNotification: 96fcf139a26a2736539b3165140a6b75f39ad894
   Stripe: d3dc7e6a9ac47a75ddb28ca9622f0e96c63398c9
   stripe-react-native: 9d40b74d379eac58e5909757bf15f1156fadf4ad
   StripeApplePay: b72a579021ed2d859a1be070ae6f3bad4eea2624

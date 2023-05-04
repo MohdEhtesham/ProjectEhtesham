@@ -20,7 +20,7 @@ const Chat = ({navigation}) => {
   };
 
   useEffect(()=>{
-    const user= AsyncStorage.setItem('user',JSON.parse(userCredential));  
+    // const user= AsyncStorage.setItem('user',JSON.parse(userCredential));  
   },[])
   useLayoutEffect(() => {
     navigation.setOptions({
