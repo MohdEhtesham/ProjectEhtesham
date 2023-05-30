@@ -22,7 +22,7 @@ const Login = ({navigation}) => {
         .then((userCredential) => {
             console.log("==========>", userCredential)
             AsyncStorage.setItem('user',JSON.stringify(userCredential));  
-          navigation.navigate('Chat');
+          navigation.navigate('Userlist');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -36,6 +36,7 @@ const Login = ({navigation}) => {
             <Input
                 placeholder='Enter your email'
                 label='Email'
+                autoCapitalize='none'
                 leftIcon={{ type: 'material', name: 'email' }}
                 value={email}
                 onChangeText={text => setEmail(text)}

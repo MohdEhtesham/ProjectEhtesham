@@ -162,8 +162,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				CEE84BA8B512B35918BE5CCE /* [CP] Embed Pods Frameworks */,
 				F45B13309EED9DE4FBA77CB9 /* [CP] Copy Pods Resources */,
+				726FD85E8392BBA6E88FFB8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,9 +185,9 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B7AD26F90E6AC3F2327FBC48 /* [CP] Embed Pods Frameworks */,
 				167946266E9C06C7181680E8 /* [CP] Copy Pods Resources */,
 				2617354680E981030E70C66E /* [CP-User] [RNFB] Core Configuration */,
+				B008226101165CCA14EA4BB5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,24 +345,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B7AD26F90E6AC3F2327FBC48 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-projectehtesham/Pods-projectehtesham-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-projectehtesham/Pods-projectehtesham-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-projectehtesham/Pods-projectehtesham-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEE84BA8B512B35918BE5CCE /* [CP] Embed Pods Frameworks */ = {
+		726FD85E8392BBA6E88FFB8C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -377,6 +360,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-projectehtesham-projectehteshamTests/Pods-projectehtesham-projectehteshamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B008226101165CCA14EA4BB5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-projectehtesham/Pods-projectehtesham-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-projectehtesham/Pods-projectehtesham-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-projectehtesham/Pods-projectehtesham-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F45B13309EED9DE4FBA77CB9 /* [CP] Copy Pods Resources */ = {

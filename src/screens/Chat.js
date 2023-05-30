@@ -8,30 +8,43 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Chat = ({navigation}) => {
   const [messages, setMessages] = useState([]);
+  const [Userdetails, setUserDetails] = useState({});
 
+  useEffect(() => {
+    getUservalue();
+  }, []);
   const signOutNow = () => {
     console.log('==========abcdefghijklmnopqrstuv');
     auth()
       .signOut()
       .then(() => {
         navigation.replace('Login');
-        AsyncStorage.clear()
+        AsyncStorage.clear();
       });
   };
 
-  useEffect(()=>{
-    // const user= AsyncStorage.setItem('user',JSON.parse(userCredential));  
-  },[])
+  const getUservalue = async () => {
+    const user = JSON.parse(await AsyncStorage.getItem('user'));
+    setUserDetails(user);
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <View style={{marginLeft: 20}}>
+        <View style={{marginLeft: 20, flexDirection:'row'}}>
           <Avatar
             rounded
             source={{
               uri: auth?.currentUser?.photoURL,
             }}
           />
+           <TouchableOpacity
+          style={{
+            marginRight: 10,
+          }}
+          onPress={()=>navigation.navigate("Userlist")}>
+          <Text>logout</Text>
+        </TouchableOpacity>
         </View>
       ),
       headerRight: () => (
@@ -47,52 +60,41 @@ const Chat = ({navigation}) => {
   }, [navigation]);
 
   useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-    ]);
-  }, []);
-
-  useEffect(() => {
-    firestore()
+    const querySnapshot = firestore()
       .collection('chats')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(documentSnapshot => {
-          console.log(
-            'User ID: ',
-            documentSnapshot.id,
-            documentSnapshot.data(),
-          );
-        });
-      });
+      .doc('123456')
+      .collection('messages')
+      .orderBy('createdAt',"desc");
+      querySnapshot.onSnapshot(querySnapshot=>{
+        const allMsg= querySnapshot.docs.map((docSnap)=>{
+          const data=docSnap.data();
+          return{
+            ...docSnap.data(),
+            createdAt:new Date(),
+          }
+        })
+        setMessages(allMsg)
+      })
   }, []);
-  const storedata = item => {
-    console.log(item[0]?.user?._id);
-    firestore()
-      .collection('chats')
-      .doc(item[0]?.user?._id)
-      .collection(item[0]?.user?._id)
-      .add(item[0])
-      .then(() => {
-        console.log('User added!');
-      });
-  };
 
   const onSend = messagesArray => {
-    setMessages(previousMessages =>
-      GiftedChat.append(previousMessages, messagesArray),
-    );
-    // const { _id, createdAt, text, user,} = messages[0]
-    //  storedata(messages)
+    console.log(messagesArray, 'ehteshammm');
+    const msg = messagesArray[0];
+    const myMsg = {
+      ...msg,
+      senderId: Userdetails.uid,
+      reciverId: '2',
+    };
+
+    setMessages(previousMessages => GiftedChat.append(previousMessages, myMsg));
+    firestore()
+      .collection('chats')
+      .doc('123456')
+      .collection('messages')
+      .add({
+        ...myMsg,
+        createdAt: firestore.FieldValue.serverTimestamp(),
+      });
   };
 
   return (
@@ -100,7 +102,7 @@ const Chat = ({navigation}) => {
       messages={messages}
       onSend={messages => onSend(messages)}
       user={{
-        _id: 1,
+        _id: Userdetails.uid,
       }}
       renderBubble={props => {
         return (

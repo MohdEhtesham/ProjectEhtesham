@@ -2,19 +2,28 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native'
 import { Input, Button } from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAdditionalUserInfo, updateProfile } from 'firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
 
 const Register = ({navigation}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [avatar, setAvatar] = useState('');
+    const [userDetails, setUserDtails] = useState([]);
+
+
+
+
     const register = () => {
   auth().createUserWithEmailAndPassword( email, password)
     .then((userCredential) => {
+     console.log("ehteshamsignin Value", userCredential)
+      setUserDtails([userCredential])
         // Registered
-     navigation.navigate("Login", {"userCredential":userCredential})
-    
+        userInfo()
+    //  navigation.navigate("Login", {"userCredential":userCredential})
+     
         
     })
     .catch((error) => {
@@ -22,6 +31,15 @@ const Register = ({navigation}) => {
         const errorMessage = error.message;
         alert(errorMessage);
     });
+}
+const userInfo =()=>{
+    firestore()
+    .collection('allUser')
+    .doc('User')
+    .add({
+     userDetails
+    });
+
 }
 
     return (
@@ -35,6 +53,7 @@ const Register = ({navigation}) => {
             <Input
                 placeholder='Enter your email'
                 label='Email'
+                autoCapitalize='none'
                 value={email}
                 onChangeText={text => setEmail(text)}
             />
@@ -44,12 +63,12 @@ const Register = ({navigation}) => {
                 value={password} onChangeText={text => setPassword(text)}
                 secureTextEntry
             />
-            <Input
+            {/* <Input
                 placeholder='Enter your image url'
                 label='Profile Picture'
                 value = {avatar}
                 onChangeText={text => setAvatar(text)}
-            />
+            /> */}
            <Button title='register' onPress={register} style={styles.button} />
         </View>
     )

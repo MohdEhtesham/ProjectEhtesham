@@ -119,6 +119,7 @@ import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import Chat from './src/screens/Chat';
 import Splash from './src/screens/Splash';
+import Userlist from './src/screens/Userlist';
 
 const Stack = createStackNavigator();
 
@@ -130,6 +131,7 @@ const App = () => {
       }}>
         <Stack.Screen name='Splash' component={Splash} />
         <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Userlist' component={Userlist} />
         <Stack.Screen name='Register' component={Register} />
         <Stack.Screen name='Chat' component={Chat}
 //  options={{

@@ -14,7 +14,7 @@ export default function Splash() {
     // console.log(user)
     if (user) {
       setTimeout(() => {
-        navigation.replace("Chat");
+        navigation.replace("Userlist");
       }, 4000);
     } else {
       setTimeout(() => {
